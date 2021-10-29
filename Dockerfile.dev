@@ -1,0 +1,12 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY package.json .
+RUN npm install
+
+# Not strictly necessary when using volume mapping 
+#  but allows us to run the image (as-built) if we wish
+COPY . .
+
+CMD ["npm", "run", "start"]
